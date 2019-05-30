@@ -1,12 +1,13 @@
-import Model
+import Model:
+
 
 def __init__():
+
+
+def tires():
     pass
 
-def setup():
-    pass
-
-def tesr_down():
+def ter_down():
     pass
 
 def update():
