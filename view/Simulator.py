@@ -12,6 +12,7 @@ import tkinter as tk
 class Simulator(tk.Frame):
     canvas = None
     master = None
+    trackView = None
 
     def __init__(self, master=None):
         super().__init__(master)
@@ -20,9 +21,14 @@ class Simulator(tk.Frame):
 
         canvas = tk.Canvas(master=None, width=950, height=800)
         canvas.pack()
+
         self.buildTrack(canvas)
+
+        self.trackView.insertCar(Car.Car())
+
+        self.trackView.insertCar()
 
 
     def buildTrack(self, canvas):
-        trackView = TrackView.TrackView(canvas)
+        self.trackView = TrackView.TrackView(canvas)
 

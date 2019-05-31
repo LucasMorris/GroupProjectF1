@@ -18,17 +18,3 @@ class Car:
         self.speed = speed
         self.locX = locX
         self.locY = locY
-
-    def startCar(self):
-        raceCar = turtle.Turtle()
-        raceCar.color("red")
-        raceCar.shape("triangle")
-
-        raceCar.up()
-        raceCar.goto(0, -125)
-
-        raceCar.forward(100)
-        raceCar.circle(125, 180)
-        raceCar.forward(200)
-        raceCar.circle(125, 180)
-        raceCar.forward(100)
