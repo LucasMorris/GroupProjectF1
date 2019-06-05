@@ -4,10 +4,12 @@ from model import Car
 
 
 class TrackView:
-    canvas = None
 
     def __init__(self, canvas):
         self.canvas = canvas
+        self.isCarOnTrack = False
+        self.car = None
+        self.thread = None
 
         outerBorder = turtle.RawTurtle(canvas)
         outerBorder.color("black", "grey") #stroke colour and fill colour
@@ -44,20 +46,24 @@ class TrackView:
         innerBorder.end_fill()
         innerBorder.hideturtle()
 
-    def insertCar( self, car):
-        self.driveCar(car)
+    def insertCar(self):
+        self.car = turtle.RawTurtle(self.canvas)
+        self.car.color("red")
+        self.car.shape("triangle")
 
-    def driveCar(self, car):
-        raceCar = turtle.RawTurtle(self.canvas)
-        raceCar.color("red")
-        raceCar.shape("triangle")
+        self.car.up()
+        self.car.goto(0, -125)
 
-        raceCar.up()
-        raceCar.goto(0, -125)
+    def driveCar(self):
+        self.car.forward(100)
+        self.car.circle(125, 180)
+        self.car.forward(200)
+        self.car.circle(125, 180)
+        self.car.forward(100)
 
-        while(1):
-            raceCar.forward(100)
-            raceCar.circle(125, 180)
-            raceCar.forward(200)
-            raceCar.circle(125, 180)
-            raceCar.forward(100)
+        self.isCarOnTrack = False
+
+    def updateCarSpeed(self, speed):
+        if not self.isCarOnTrack:
+            print(speed)
+            self.car.speed(speed)
